@@ -7,6 +7,14 @@ import multer from 'multer';
 const userDb = new UserDB();
 const asaas = new Asaas();
 
+export const getStatus = async (req: Request, res: Response) => {
+    try {
+        res.status(200).json({ message: 'Server DoaMundo running!' });
+    } catch (error) {
+        res.status(500).json({ error: (error as any).message });
+    }
+};
+
 export const createUser = async (req: Request, res: Response) => {
     try {
         const response = await userDb.addUser(req.body);
